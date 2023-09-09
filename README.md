@@ -1,24 +1,83 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type               | Options                  |
+| ------------------ | ------------------ | ------------------------ |
+| nickname           | string¥null: false | null: false              |
+| email              | string             | null: false, unique:true |
+| password           | string             | null: false              |
+| family_name        | string             | null: false              |
+| first_name         | string             | null: false              |
+| family_name_kana   | string             | null: false              |
+| first_name_kana    | string             | null: false              |
+| birth_year         | string             | null: false              |
+| birth_month        | string             | null: false              |
+| birth_day          | string             | null: false              |
+| status             | integer            | null: false              |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :items
+- has_many :likes dependent: :destroy
+- has_many :comments dependent: :destroy
 
-* System dependencies
+##  items テーブル
 
-* Configuration
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| item_name     | string     | null: false                    |
+| explanation   | text       | null: false                    |
+| category_id   | references | null: false, foreign_key: true |
+| condition_id  | references | null: false, foreign_key: true |
+| shipping_id   | references | null: false, foreign_key: true |
+| prefecture_id | references | null: false, foreign_key: true |
+| shipping_days_id| references | null: false, foreign_key: true |
+| price         | integer    | null: false                    |
 
-* Database creation
+### Association
 
-* Database initialization
+- belongs_to :user
+- has_many :comments
+- has_many :likes
+- has_one :buyer
 
-* How to run the test suite
+##  Buyer　テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| buyer_name     | string     | null: false                    |
+| postal_code    | integer    | null: false                    |
+| prefecture     | string     | null: false                    |
+| address1       | text       | null: false                    |
+| address2       | text       | null: false                    |
+| postage        | integer    | null: false                    |
+| billing_amount | integer    | null: false                    |
+| status         | text       | null: false                    |
+| created_at     | date       | null: false                    |
+| updated_at     | date       | null: false                    |
 
-* Deployment instructions
 
-* ...
+### Association
+has_one: item
+
+##  likes テーブル
+| Column    | Type       | Options               |
+| --------- | ---------- | --------------------- |
+| user_id   | string     | null: false           |
+| item_id   | text       | null: false           |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+
+##  comments テーブル
+| Column    | Type       | Options                 |
+| --------- | ---------- | ----------------------- |
+| user_id   | string     | null: foreign_key: true |
+| item_id   | string     | null: foreign_key: true |
+| text      | text       | null: false             |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
