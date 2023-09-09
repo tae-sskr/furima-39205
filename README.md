@@ -13,7 +13,7 @@
 
 ### Association
 
-- has_many :buyers
+- has_many :orders
 - has_many :items
 - has_many :likes
 - has_many :comments
@@ -28,20 +28,19 @@
 | condition_id     | integer    | null: false                    |
 | shipping_id      | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
-| shipping_days_id | integer    | null: false                    |
+| shipping_day_id  | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
-
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
 - has_many :likes
-- has_one :buyer
+- has_one :order
 
-## buyers　テーブル
- 
+## orders　テーブル
+
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | user           | references | null: false, foreign_key: true |
@@ -49,6 +48,8 @@
 
 ### Association
 belongs_to: item
+has_one :user
+has_one :shipping
 
 ## shippings
 
@@ -60,12 +61,11 @@ belongs_to: item
 | address2       | string     | null: false                    |
 | shipping_cost	 | integer    | null: false                    |
 | shipping_days  | integer    | null: false                    |
-| buyer          | references | null: false, foreign_key: true |
+| order          | references | null: false, foreign_key: true |
 
 ### Association
-has_one :item
-belongs_to :buyer
-belongs_to :user
+
+belongs_to :order
 
 ##  likes テーブル
 | Column | Type       | Options                 |
@@ -79,6 +79,7 @@ belongs_to :user
 - belongs_to :user
 
 ##  comments テーブル
+
 | Column | Type       | Options                 |
 | ------ | ---------- | ----------------------- |
 | user   | references | null: foreign_key: true |
