@@ -47,8 +47,8 @@
 | item           | references | null: false, foreign_key: true |
 
 ### Association
-belongs_to: item
-has_one :user
+belongs_to :item
+belongs_to :user
 has_one :shipping
 
 ## shippings
@@ -59,8 +59,8 @@ has_one :shipping
 | prefecture_id  | integer    | null: false                    |
 | address1       | string     | null: false                    |
 | address2       | string     | null: false                    |
-| shipping_cost	 | integer    | null: false                    |
-| shipping_days  | integer    | null: false                    |
+| building_name	 | string     | null: false                    |
+| telephone      | integer    | null: false                    |
 | order          | references | null: false, foreign_key: true |
 
 ### Association
