@@ -40,8 +40,8 @@
 - has_many :likes
 - has_one :buyer
 
-##  Buyer　テーブル
-
+##  Buyer テーブル
+ 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | buyer_name     | string     | null: false                    |
