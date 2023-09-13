@@ -72,5 +72,3 @@ gem 'pry-rails'
 group :development do
   gem 'rubocop', require: false
 end
-
-# gem 'faker-japanese', require: 'faker'
