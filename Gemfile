@@ -73,4 +73,4 @@ group :development do
   gem 'rubocop', require: false
 end
 
-gem 'faker-japanese', require: 'faker'
+# gem 'faker-japanese', require: 'faker'
