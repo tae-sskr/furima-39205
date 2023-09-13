@@ -28,7 +28,7 @@
 | condition_id     | integer    | null: false                    |
 | shipping_id      | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
-| shipping_day_id  | integer    | null: false                    |
+| schedule_id  | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
