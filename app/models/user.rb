@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :birth_day, presence: true
 
   # has_many :orders
-  # has_many :items
+  has_many :items
   # has_many :likes
   # has_many :comments
 end
