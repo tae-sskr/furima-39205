@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   belongs_to :user
   # has_many :comments
   # has_many :likes
-  # has_one :order
+  has_one :order
   belongs_to :category
   belongs_to :condition
   belongs_to :shipping
@@ -20,8 +20,7 @@ class Item < ApplicationRecord
   validates :explanation, presence: true
 
   with_options presence: true, format: { with: /\A[0-9]+\z/ } do
-    validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
-                      presence: { message: "can't be blamk" }
+    validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }, presence: { message: "can't be blamk" }
   end
 
   def was_attached?
