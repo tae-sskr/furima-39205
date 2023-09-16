@@ -24,15 +24,14 @@ class ItemsController < ApplicationController
     # @order = @item.order
   end
 
-
   private
 
   def item_params
-    params.require(:item).permit(:item_name, :explanation, :category_id, :condition_id, :shipping_id, :prefecture_id, :schedule_id, :price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:item_name, :explanation, :category_id, :condition_id, :shipping_id, :prefecture_id,
+                                 :schedule_id, :price, :image).merge(user_id: current_user.id)
   end
 
   def set_item
     @item = Item.find(params[:id])
   end
-
 end
