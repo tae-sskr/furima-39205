@@ -24,6 +24,18 @@ class ItemsController < ApplicationController
     # @order = @item.order
   end
 
+  def edit
+    unless current_user == @item.user_id
+      redirect_to action: :index
+    end
+  end
+
+  def update
+
+  end
+
+
+
   private
 
   def item_params
