@@ -20,8 +20,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @item = Item.new
-    # @order = @item.order
   end
 
   def edit
@@ -38,6 +36,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item.destroy
+    redirect_to action: :index
+  end
 
 
   private
