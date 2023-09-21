@@ -1,4 +1,4 @@
-class OrderShipping < ApplicationRecord
+class OrderShipping
 
   include ActiveModel::Model
   attr_accessor :postal_code, :prefecture_id, :address1, :address2, :building_name, :telephone, :user_id, :item_id, :token
@@ -16,8 +16,9 @@ class OrderShipping < ApplicationRecord
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
   
   def save
+    binding.pry
     order = Order.create(user_id: user_id, item_id: item_id)
 
-    Shipping.create(postal_code: postal_code, prefecture_id: prefecture_id, address1: address1, address2: address2, building_name: building_name, telephone: telephone, order_id: order.id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, address1: address1, address2: address2, building_name: building_name, telephone: telephone, order_id: order.id)
   end
 end
