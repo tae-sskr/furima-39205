@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
 
   def sold
     @item = Item.find(params[:item_id])
-    if @item.purchase.present?
+    if @item.order.present?
       redirect_to root_path
     end
   end
