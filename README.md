@@ -51,7 +51,7 @@ belongs_to :item
 belongs_to :user
 has_one :shipping
 
-## shippings
+## addresses
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
