@@ -39,6 +39,11 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Address1 can't be blank")
       end
+      it 'address2が空だと購入できない' do
+        @order_shipping.address2 = ''
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include("Address2 can't be blank")
+      end
       it 'telephoneが空だと購入できない' do
         @order_shipping.telephone = ''
         @order_shipping.valid?
@@ -63,6 +68,16 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.token = ''
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'userが紐付いていなければ購入できない' do
+        @order_shipping.user_id = ''
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include("User can't be blank")
+      end
+      it 'itemが紐付いていなければ購入できない' do
+        @order_shipping.item_id = ''
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
